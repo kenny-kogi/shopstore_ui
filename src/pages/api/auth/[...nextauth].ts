@@ -51,6 +51,25 @@ export default NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      const isAllowedToSignIn = true;
+      if (isAllowedToSignIn) {
+        return true;
+      } else {
+        // Return false to display a default error message
+        return false;
+        // Or you can return a URL to redirect to:
+        // return '/unauthorized'
+      }
+    },
+    async jwt({ token, user }) {
+      return token;
+    },
+    async session({ session, user }) {
+      return session;
+    },
+  },
   pages: {
     signIn: "/login",
     signOut: "/auth/signout",

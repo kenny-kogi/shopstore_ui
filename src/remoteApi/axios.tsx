@@ -7,19 +7,11 @@ const axiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
     accept: "application/json",
-    // Authorization: `Bearer  ${token}`
   },
 });
 
-// axios.interceptors.request.use(function (config) {
-//   const token = localStorage.getItem('token');
-//   config.headers.Authorization =  token ? `Bearer ${token}` : '';
-//   return config;
-// });
-
-// export const get_expenses_under_activity = (id, token) => {
-//   return axiosInstance.get(`${baseURL}/expense/${id}`,
-//     {
-//       headers: { Authorization: `Bearer ${token}` }
-//     });
-// }
+export const get_all_products = (token: String) => {
+  return axiosInstance.get(`${baseURL}/products`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
